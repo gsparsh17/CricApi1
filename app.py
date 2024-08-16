@@ -67,15 +67,20 @@ def recent_scores():
  soup = BeautifulSoup(html_content, 'html.parser')
 
 # Find all match cards
- match_cards = soup.find_all('div', class_='style_fixturesItem__3hcva')
+ match_cards = soup.find_all('div', class_='style_fixturesItem__3hcva common-box mb-2 p-md-3 br-md false')
 
 # List to store match data
  matches = []
+ match_result_text=""
 
 # Loop through each match card and extract data
  for card in match_cards:
       match_time = card.find('p', class_='style_matchTime__pZznE').text.strip()
-      match_result = card.find('p', class_='d-flex align-items-start style_matchStatus__ruEMh text-success').text.strip()
+      match_result = card.find('p', class_='d-flex align-items-start style_matchStatus__ruEMh text-success')
+      if match_result:
+         match_result_text=match_result.text.strip()
+      else:
+         match_result_text= "Not Available"
       match_type = card.find('p', class_='font-semi text-dark').text.strip()
       location = card.find('p', class_='text-muted').text.strip()
 
