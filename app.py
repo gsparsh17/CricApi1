@@ -92,7 +92,7 @@ def recent_scores():
 
       match_data = {
         "match_time": match_time,
-        "result": match_result,
+        "result": match_result_text,
         "match_type": match_type,
         "location": location,
         "teams": [
